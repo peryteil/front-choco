@@ -1,0 +1,210 @@
+/* 전체 마켓 페이지 여백 */
+.market-page {
+    padding-top: 20px;
+  }
+  
+  /* 마켓 배너 (상단) */
+  .market-banner {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    padding: 20px;
+  }
+  
+  /* 배너 안쪽 내용 */
+  .banner-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .banner-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .banner-subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .banner-buttons {
+    margin-top: 20px;
+  }
+  
+  .banner-btn {
+    background-color: #f97316;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .banner-btn:hover {
+    background-color: #e05d00;
+  }
+  
+  /* 마켓 본문 (필터 + 상품 리스트 자리) */
+  .market-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* 필터 사이드바 */
+  .filter-sidebar {
+    width: 250px;
+  }
+  
+  /* 상품 리스트 */
+  .product-list {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  /* 반응형 (태블릿, 모바일 대응) */
+  @media (max-width: 768px) {
+    .market-content {
+      flex-direction: column;
+    }
+  
+    .product-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-list {
+      grid-template-columns: 1fr;
+    }
+  }
+  /* 카테고리 탭 */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px 0;
+    gap: 10px;
+  }
+  
+  .tab {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #555;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .tab:hover {
+    background-color: #f97316;
+    color: #fff;
+  }
+  
+  .tab.active {
+    background-color: #f97316;
+    color: white;
+  }
+  .filter-section input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f97316;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .filter-section input[type="checkbox"]:checked {
+    background-color: #f97316;
+    border-color: #f97316;
+  }
+  
+  .filter-section input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .product-image-wrapper {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+  }
+  
+  .product-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .product-info {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .product-info .brand {
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .product-info .name {
+    font-size: 16px;
+    margin: 8px 0 4px;
+  }
+  
+  .product-info .price {
+    font-weight: bold;
+    color: #f97316;
+    margin-bottom: 6px;
+  }
+  
+  .product-info .type {
+    font-size: 12px;
+    padding: 2px 6px;
+    background-color: #f3f3f3;
+    color: #666;
+    border-radius: 4px;
+  }
+  

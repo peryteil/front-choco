@@ -1,0 +1,140 @@
+.brand-detail-wrapper {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #fff;
+  }
+  
+  .back-btn {
+    background: none;
+    border: none;
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .brand-detail-content {
+    display: flex;
+    gap: 40px;
+  }
+  
+  /* 왼쪽 이미지 영역 */
+  .brand-detail-left img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* 오른쪽 정보 영역 */
+  .brand-detail-right {
+    flex: 1;
+  }
+  
+  .brand-detail-right h2 {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .brand-detail-right .desc {
+    margin: 12px 0;
+    color: #555;
+  }
+  
+  .brand-detail-right .badge {
+    background: #eee;
+    padding: 4px 10px;
+    font-size: 14px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  
+  .brand-info li {
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+  
+  .brand-info li a {
+    color: #ff6600;
+    text-decoration: none;
+  }
+  
+  /* 탭 영역 */
+  .brand-tab-section {
+    margin-top: 40px;
+    padding: 0 10px;
+  }
+  
+  .brand-tab-buttons {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .brand-tab-buttons button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #333;
+    transition: background 0.2s, color 0.2s;
+  }
+  
+  .brand-tab-buttons .active {
+    background: #ff6600;
+    color: white;
+    font-weight: bold;
+    border-color: #ff6600;
+  }
+  
+  .brand-tab-content {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.7;
+  }
+  
+  /* 하단 다른 브랜드 추천 */
+  .other-brand-section {
+    text-align: left;
+    margin-top: 60px;
+  }
+  
+  .other-brand-section h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .other-brand-section .brand-grid {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  .other-brand-section .brand-card {
+    width: 240px;
+    padding: 16px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .other-brand-section .brand-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .other-brand-section .brand-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  

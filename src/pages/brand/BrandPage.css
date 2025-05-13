@@ -1,0 +1,95 @@
+.brand-wrapper {
+    background-color: #fff;
+  }
+  
+  .brand-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  .brand-main-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .brand-subtitle {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 24px;
+  }
+  
+  .brand-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  
+  .brand-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+  }
+  
+  .brand-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .brand-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .brand-card h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .brand-card .founded {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+  
+  .brand-card .desc {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.4;
+  }
+  .brand-category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.brand-category-button {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.brand-category-button:hover {
+  background-color: #f2f2f2;
+}
+
+.brand-category-button.active {
+  background-color: #ff6b00;
+  color: #fff;
+  border-color: #ff6b00;
+  font-weight: bold;
+}

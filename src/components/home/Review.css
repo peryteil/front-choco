@@ -1,0 +1,105 @@
+.review-section {
+    padding: 60px 20px;
+  }
+  
+  .review-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+  }
+  
+  .review-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .more-link {
+    font-size: 14px;
+    color: #f97316;
+    text-decoration: none;
+  }
+  
+  .review-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  /* ✨ 화면 작아지면 1열로 */
+  @media (max-width: 768px) {
+    .review-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .review-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .review-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .profile-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .nickname {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .stars {
+    margin-left: auto;
+    font-size: 14px;
+    color: #ffc107;
+  }
+  
+  .review-body {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .product-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .product-info {
+    flex: 1;
+  }
+  
+  .product-info h3 {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  
+  .date {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 8px;
+  }
+  
+  .content {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.4;
+  }
+  

@@ -1,0 +1,85 @@
+.write-form-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  
+  .write-form h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .write-form label {
+    font-weight: 600;
+    margin: 12px 0 6px;
+    display: block;
+  }
+  
+  .write-form input,
+  .write-form select,
+  .write-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 12px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .form-row > div {
+    flex: 1;
+  }
+  
+  .form-row input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  
+  .upload-box {
+    margin: 12px 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .upload-placeholder {
+    width: 120px;
+    height: 120px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .upload-box img {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .write-form button {
+    margin-top: 20px;
+    background: #ff6600;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  

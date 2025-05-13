@@ -1,0 +1,288 @@
+.review-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: "Noto Sans KR", sans-serif;
+  }
+  
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .count {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 30px;
+  }
+  
+  .review-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-write {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .search-write input {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  .search-write button {
+    background-color: #0070c0;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .review-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .review-card {
+    width: 330px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    background: #fff;
+  }
+  
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .review-body {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .review-body img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .review-info h4 {
+    font-size: 15px;
+    margin: 0;
+  }
+  
+  .review-info .date {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 5px;
+  }
+  
+  .review-info .content {
+    font-size: 14px;
+    color: #333;
+  }
+  .trending-section {
+    margin-top: 50px;
+  }
+  
+  .trending-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .trending-header h2 {
+    font-size: 20px;
+  }
+  
+  .more-link {
+    font-size: 14px;
+    color: #f60;
+    text-decoration: none;
+  }
+  
+  .trending-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .trending-card {
+    width: calc(20% - 20px);
+    min-width: 160px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .trending-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  
+  .trending-title {
+    margin: 5px 0 6px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .trending-stats {
+    font-size: 12px;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .review-list-page {
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: "Noto Sans KR", sans-serif;
+  }
+  
+  .review-list-page h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .filter-buttons {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .filter-buttons button {
+    padding: 6px 16px;
+    border-radius: 20px;
+    background-color: #f1f1f1;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .filter-buttons .active {
+    background-color: #ff6b00;
+    color: #fff;
+  }
+  
+  .review-box {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  }
+  
+  .review-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .user {
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  
+  .stars {
+    font-size: 14px;
+    color: #ffb400;
+  }
+  
+  .date {
+    font-size: 13px;
+    color: #888;
+  }
+  
+  .review-body {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .review-body img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .review-info {
+    flex: 1;
+  }
+  
+  .review-info h3 {
+    margin: 0 0 6px;
+    font-size: 17px;
+  }
+  
+  .meta {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  
+  .content {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .review-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .stats span {
+    margin-right: 15px;
+    font-size: 13px;
+    color: #666;
+  }
+  
+  .detail-button {
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .search-box {
+    margin-bottom: 20px;
+  }
+  
+  .search-box input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  

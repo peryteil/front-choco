@@ -1,0 +1,28 @@
+.commu-header {
+    display: flex;
+    justify-content: center;
+    background-color: #f8f9fa; /* 밝은 배경색 */
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 살짝 그림자 */
+  }
+  
+  .nav-bar {
+    display: flex;
+    gap: 30px; /* 링크 사이 간격 */
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #333; /* 기본 글자색 */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .nav-link:hover {
+    background-color: #ff9100;
+    color: white;
+  }
+  
