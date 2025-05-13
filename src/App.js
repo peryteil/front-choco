@@ -19,6 +19,7 @@ import CartPage from "./pages/cart/Page";
 import SignUpPage from "./pages/signup/Page";
 import LoginPage from "./pages/login/Page";
 import MyPage from "./pages/mypage/Page";
+import OauthRedirectPage from "./pages/oauth/RedirectPage";
 
 function App() {
   return (
