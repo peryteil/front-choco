@@ -1,22 +1,17 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-
-const dummyList = [
-    {
-        id: 1,
-        type: "쇼핑",
-        shop: "쿠팡",
-        title: "아이패드 할인🔥",
-        likes: 32,
-        comments: 10,
-        views: 200,
-        author: "admin",
-        date: "2025-04-30"
-    }
-];
+import React, { useState } from "react";
+import { useNavigate, useOutletContext } from "react-router-dom";
+import "./HotdealListPage.css";
 
 function HotdealListPage() {
+    const {hotDeals} = useOutletContext();
     const navigate = useNavigate();
+    const [currentPage,setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+
+    const totalPages = Math.ceil((hotDeals?.length||0) / itemsPerPage);
+
+    const startIdex = (currentPage -1) *itemsPerPage;
+    const currentItems = (hotDeals||[]).slice(startIdex , startIdex+itemsPerPage);
 
     return (
         <div>
@@ -34,30 +29,48 @@ function HotdealListPage() {
                         </tr>
                     </thead>
                     <tbody>
-                        {dummyList.map((item, i) => (
-                            <tr key={i} onClick={() => navigate(`/community/hotdeal/${item.id}`)}>
-                                <td><span className="type-badge">{item.type}</span></td>
-                                <td>{item.shop}</td>
-                                <td>
+                        {(currentItems||[]).map((item, i) => (
+                            <tr key={item.id} >
+                                <td><span className="type-badge">{item.category}</span></td>
+                                <td>{item.shopName}</td>
+                                <td 
+                                className="clickable" 
+                                onClick={() => navigate(`/community/hotdeal/${item.id}`)}>
                                     {item.title}
-                                    {i < 3 && <span className="label">HOTDEAL</span>}
-                                </td>
-                                <td>👍 {item.likes} 💬 {item.comments}</td>
-                                <td>{item.views}</td>
-                                <td>{item.author}</td>
-                                <td>{item.date}</td>
+                                    </td>
+                                <td>👍 {item.likeCount} 💬 {item.viewCount}</td>
+                                <td>{item.viewCount}</td>
+                                <td>{item.category}</td>
+                                <td>{item.createdAt.split("T")[0]}</td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
 
+            {/* 페이지네이션 */}
             <div className="pagination">
-                <button>{"<"}</button>
-                <button className="active">1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>{">"}</button>
+                <button
+                    onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                >
+                    {"<"}
+                </button>
+                {[...Array(totalPages)].map((_, i) => (
+                    <button
+                        key={i}
+                        className={currentPage === i + 1 ? "active" : ""}
+                        onClick={() => setCurrentPage(i + 1)}
+                    >
+                        {i + 1}
+                    </button>
+                ))}
+                <button
+                    onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                >
+                    {">"}
+                </button>
             </div>
 
             <div className="write-button">
