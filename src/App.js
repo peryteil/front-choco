@@ -19,6 +19,7 @@ import CartPage from "./pages/cart/Page";
 import SignUpPage from "./pages/signup/Page";
 import LoginPage from "./pages/login/Page";
 import MyPage from "./pages/mypage/Page";
+import OauthRedirectPage from "./pages/oauth/RedirectPage";
 
 function App() {
   return (
@@ -54,7 +55,6 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/mypage" element={<MyPage />} />
-
         <Route path="/oauth2/redirect" element={<OauthRedirectPage />} />
       </Routes>
       <Footer />
