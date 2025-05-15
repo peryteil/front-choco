@@ -12,7 +12,7 @@ export default function MarketPage() {
     const [priceRange, setPriceRange] = useState(200000);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/product/findAllSimple")
+        axios.get(`${process.env.REACT_APP_API_URL}/product/findAllSimple`)
             .then((res) => {
                 setProduct(res.data);
             })

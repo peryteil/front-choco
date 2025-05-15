@@ -50,7 +50,7 @@ export default function Header() {
                         </button>
 
                         {/* 마이페이지 버튼 - 항상 보이게 */}
-                        <Link to={isLoggedIn ? "/mypage" : "/login"} className="mypage-button">
+                        <Link to="/mypage" className="mypage-button">
                             <User size={20} />
                         </Link>
 

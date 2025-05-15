@@ -9,7 +9,7 @@ export default function HotdealPage() {
   const [hotDeals , setHotdeals] = useState([]);
 
   useEffect(()=>{
-    axios.get(`http://localhost:8080/hotDeal/findAllList`)
+    axios.get(`${process.env.REACT_APP_API_URL}/hotDeal/findAllList`)
     .then(res=>setHotdeals(res.data))
     .catch(err=>console.log("핫딜 데이터 불러오기 실패",err))
   },[])

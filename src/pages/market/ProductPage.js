@@ -9,7 +9,7 @@ export default function ProductPage() {
     const { id } = useParams();
     const [product, setProduct] = useState(null)
     useEffect(() => {
-        axios.get(`http://localhost:8080/product/findById/${id}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/product/findById/${id}`)
             .then((res) => {
                 setProduct(res.data)
             })
@@ -22,7 +22,7 @@ export default function ProductPage() {
 
 
     if (!product) {
-        return <div>상품을 찾을 수 없습니다.</div>;
+        return <div className="empty-message">상품을 불러오는 중입니다...</div>;
     }
 
     return (
