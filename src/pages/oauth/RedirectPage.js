@@ -14,11 +14,8 @@ function OauthRedirectPage() {
 
     if (token) {
       localStorage.setItem("access_token", token);
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      window.dispatchEvent(new Event("login")); // ✅ 추가
       navigate("/");
-    } else {
-      alert("로그인 토큰 없음 (token query 누락)");
-      navigate("/login");
     }
   }, [navigate]);
 

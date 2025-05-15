@@ -26,11 +26,16 @@ export default function LoginPage() {
 
       const { accessToken } = response.data;
 
+      // if (accessToken) {
+      //   localStorage.setItem("access_token", accessToken);
+      //   axios.defaults.headers.common[
+      //     "Authorization"
+      //   ] = `Bearer ${accessToken}`;
+      //   navigate("/");
+      // }
       if (accessToken) {
         localStorage.setItem("access_token", accessToken);
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${accessToken}`;
+        window.dispatchEvent(new Event("login")); // ✅ 이거 추가
         navigate("/");
       }
     } catch (error) {
