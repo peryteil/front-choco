@@ -25,18 +25,10 @@ export default function LoginPage() {
       );
 
       const { accessToken } = response.data;
-
-      // if (accessToken) {
-      //   localStorage.setItem("access_token", accessToken);
-      //   axios.defaults.headers.common[
-      //     "Authorization"
-      //   ] = `Bearer ${accessToken}`;
-      //   navigate("/");
-      // }
       if (accessToken) {
         localStorage.setItem("access_token", accessToken);
-        window.dispatchEvent(new Event("login")); // ✅ 이거 추가
-        navigate("/");
+        window.dispatchEvent(new Event("login")); // 선택적: 로그인된 상태 처리
+        navigate("/mypage"); // ✅ 로그인 후 마이페이지 이동
       }
     } catch (error) {
       alert("로그인 실패: " + (error.response?.data || "알 수 없는 오류"));
