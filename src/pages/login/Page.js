@@ -8,20 +8,35 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return;
+    setLoading(true);
     try {
-      const response = await axios.post("http://localhost:8080/api/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:8080/auth/login",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
 
-      // 로그인 성공 시 홈으로 이동
-      alert(response.data);
-      navigate("/");
+      const { accessToken } = response.data;
+
+      if (accessToken) {
+        localStorage.setItem("access_token", accessToken);
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${accessToken}`;
+        navigate("/");
+      }
     } catch (error) {
       alert("로그인 실패: " + (error.response?.data || "알 수 없는 오류"));
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,21 +65,41 @@ export default function LoginPage() {
             required
           />
 
-          <button type="submit" className="login-button">로그인</button>
+          <button type="submit" className="login-button">
+            로그인
+          </button>
         </form>
 
         <div className="login-divider">또는</div>
 
         <div className="social-login">
-          <button className="social" onClick={() => window.location.href = "http://localhost:8080/oauth2/authorization/google"}>
+          <button
+            className="social"
+            onClick={() =>
+              (window.location.href =
+                "http://localhost:8080/oauth2/authorization/google")
+            }
+          >
             <img src="/icon/google.png" alt="Google" />
             Google로 계속하기
           </button>
-          <button className="social" onClick={() => window.location.href = "http://localhost:8080/oauth2/authorization/naver"}>
+          <button
+            className="social"
+            onClick={() =>
+              (window.location.href =
+                "http://localhost:8080/oauth2/authorization/naver")
+            }
+          >
             <img src="/icon/naver.png" alt="Naver" />
             Naver로 계속하기
           </button>
-          <button className="social" onClick={() => window.location.href = "http://localhost:8080/oauth2/authorization/kakao"}>
+          <button
+            className="social"
+            onClick={() =>
+              (window.location.href =
+                "http://localhost:8080/oauth2/authorization/kakao")
+            }
+          >
             <img src="/icon/kakao.png" alt="Kakao" />
             Kakao로 계속하기
           </button>
