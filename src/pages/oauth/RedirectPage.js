@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function OauthRedirectPage() {
   const navigate = useNavigate();
@@ -8,11 +9,15 @@ function OauthRedirectPage() {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get("token");
 
+    console.log("리디렉션에서 받은 토큰:", token);
+    console.log("기존 토큰:", localStorage.getItem("access_token"));
+
     if (token) {
-      localStorage.setItem("accessToken", token);
+      localStorage.setItem("access_token", token);
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       navigate("/");
     } else {
-      alert("로그인 토큰 없음");
+      alert("로그인 토큰 없음 (token query 누락)");
       navigate("/login");
     }
   }, [navigate]);
