@@ -41,13 +41,6 @@ export default function Header() {
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-
-
-                        {/* 마이페이지 버튼 - 항상 보이게 */}
-                        <Link to="/mypage" className="mypage-button">
-                            <User size={20} />
-                        </Link>
-
           <div className="logo">
             <Link to="/">
               <img
@@ -61,7 +54,6 @@ export default function Header() {
             </Link>
           </div>
 
-
           <nav className="nav-desktop">
             <Link to="/">홈</Link>
             <Link to="/market">마켓</Link>
@@ -74,7 +66,6 @@ export default function Header() {
               <Search size={20} />
             </button>
 
-
             <Link
               to={isLoggedIn ? "/mypage" : "/login"}
               className="mypage-button"
@@ -83,13 +74,21 @@ export default function Header() {
             </Link>
 
             {isLoggedIn ? (
-              <button onClick={handleLogout} className="icon-button logout-icon" title="로그아웃">
+              <button
+                onClick={handleLogout}
+                className="icon-button logout-icon"
+                title="로그아웃"
+              >
                 <LogOut size={20} />
               </button>
             ) : (
               <div className="auth-buttons">
-                <Link to="/login" className="login-btn">로그인</Link>
-                <Link to="/signup" className="signup-btn">회원가입</Link>
+                <Link to="/login" className="login-btn">
+                  로그인
+                </Link>
+                <Link to="/signup" className="signup-btn">
+                  회원가입
+                </Link>
               </div>
             )}
 
@@ -99,33 +98,6 @@ export default function Header() {
             </Link>
           </div>
         </div>
-
-
-            <Link
-              to={isLoggedIn ? "/mypage" : "/login"}
-              className="mypage-button"
-            >
-              <User size={20} />
-            </Link>
-
-            {isLoggedIn ? (
-              <button onClick={handleLogout} className="icon-button logout-icon" title="로그아웃">
-                <LogOut size={20} />
-              </button>
-            ) : (
-              <div className="auth-buttons">
-                <Link to="/login" className="login-btn">로그인</Link>
-                <Link to="/signup" className="signup-btn">회원가입</Link>
-              </div>
-            )}
-
-            <Link to="/cart" className="cart-button">
-              <ShoppingCart size={20} />
-              <span className="cart-count"></span>
-            </Link>
-          </div>
-        </div>
-
 
         {isSearchOpen && (
           <div className="search-dialog">
