@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 
@@ -20,6 +20,9 @@ import SignUpPage from "./pages/signup/Page";
 import LoginPage from "./pages/login/Page";
 import MyPage from "./pages/mypage/Page";
 import OauthRedirectPage from "./pages/oauth/RedirectPage";
+import CommunityPage from "./pages/community/Page"
+// import AdminPage from "./pages/admin/Page"; 
+import AdminDashboard from "./pages/admin/DashboardPage";
 
 function App() {
   return (
@@ -35,6 +38,7 @@ function App() {
 
         {/* 커뮤니티 레이아웃 */}
         <Route path="/community" element={<CommunityLayout />}>
+        <Route index element={<CommunityPage/>}/>
           <Route path="hotdeal" element={<HotdealPage />}>
             <Route index element={<HotdealListPage />} />
             <Route path="write" element={<HotWritePage />} />
@@ -56,6 +60,9 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/oauth2/redirect" element={<OauthRedirectPage />} />
+        {/* 관리자 페이지 */}
+        {/* <Route path="/admin" element={<AdminPage />} /> */}
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Routes>
       <Footer />
     </div>

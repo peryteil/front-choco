@@ -1,0 +1,11 @@
+/* 제목 셀 클릭 가능하게 만들기 */
+.hotdeal-table td.clickable {
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* hover 시 배경과 글자색 강조 */
+.hotdeal-table td.clickable:hover {
+  text-decoration: underline;
+  color: #007bff; /* 파란색 강조 효과 */
+}

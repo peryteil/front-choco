@@ -1,88 +1,106 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./HotdealDetailPage.css";
-
-const dummyList = [
-  {
-    id: 1,
-    author: "데일리핫딜",
-    category: "신발",
-    type: "해외핫딜",
-    shop: "Extra Butter",
-    link: "https://extrabutterny.com/collections/spring-sale/products/new-balance-mens-made-in-usa-993-core-shoes",
-    title: "Extra Butter) Made In USA 993 Core $200",
-    price: "$200.00",
-    likes: 493,
-    date: "2025-04-30 10:38:22",
-    image: process.env.PUBLIC_URL + "/image/cho1.png"
-  }
-];
-
-const dummyComments = [
-  { id: 1, author: "신발덕후", content: "이거 저번에 샀는데 진짜 좋아요!", date: "2025-04-30" },
-  { id: 2, author: "abc123", content: "할인 기간이 언제까지인가요?", date: "2025-04-30" }
-];
+import axios from "axios";
 
 function HotdealDetailPage() {
   const { id } = useParams();
-  const detail = dummyList.find(item => item.id === Number(id));
-  const [comments, setComments] = useState(dummyComments);
+  const [detail, setDetail] = useState(null);
   const [newComment, setNewComment] = useState("");
 
-  if (!detail) return <div className="not-found">해당 핫딜을 찾을 수 없습니다.</div>;
+  // 상세 조회 + 조회수 증가
+  const fetchDetail = async () => {
+    try {
+      await axios.post(`${process.env.REACT_APP_API_URL}/hotDeal/increaseViewCount/${id}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/hotDeal/findById/${id}`);
+      setDetail(res.data);
+    } catch (err) {
+      console.error("상세 데이터 불러오기 실패", err);
+      setDetail(null);
+    }
+  };
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    fetchDetail();
+  }, [id]);
+
+  const handleLike = async () => {
+    try {
+      await axios.post(`${process.env.REACT_APP_API_URL}/hotDeal/increaseLikeCount/${id}`);
+      setDetail(prev => ({ ...prev, likeCount: prev.likeCount + 1 }));
+    } catch (err) {
+      console.error("좋아요 실패", err);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (newComment.trim() === "") return;
-    const next = {
-      id: comments.length + 1,
-      author: "익명",
-      content: newComment,
-      date: new Date().toISOString().split("T")[0]
-    };
-    setComments([...comments, next]);
-    setNewComment("");
+
+    try {
+      const params = new URLSearchParams();
+      params.append("comment", newComment);
+
+      await axios.post(`${process.env.REACT_APP_API_URL}/comment/create/${id}`, params, {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      });
+
+      setNewComment("");
+      fetchDetail(); // 댓글 등록 후 다시 불러오기
+    } catch (err) {
+      console.error("댓글 등록 실패", err);
+    }
   };
+
+  if (!detail) return <div className="not-found">해당 핫딜을 찾을 수 없습니다.</div>;
 
   return (
     <div className="deal-detail-container">
       <h2 className="deal-title">핫딜정보 보기</h2>
       <table className="deal-table">
         <tbody>
-          <tr><th>작성자</th><td>{detail.author}</td></tr>
-          <tr><th>핫딜 정보</th><td>{detail.type}</td></tr>
+          <tr><th>작성자</th><td>{detail.title}</td></tr>
+          <tr><th>핫딜 정보</th><td>{detail.content}</td></tr>
           <tr><th>분류</th><td>{detail.category}</td></tr>
-          <tr><th>등록일</th><td>{detail.date}</td></tr>
-          <tr><th>쇼핑몰</th><td>{detail.shop}</td></tr>
+          <tr><th>등록일</th><td>{detail.createdAt.split("T")[0]}</td></tr>
+          <tr><th>쇼핑몰</th><td>{detail.shopName}</td></tr>
+          <tr><th>URL 링크</th><td><a href={detail.shopLink} target="_blank" rel="noopener noreferrer">{detail.shopLink}</a></td></tr>
+          <tr><th>금액</th><td style={{ color: "#0070c0" }}>{detail.price}원</td></tr>
           <tr>
-            <th>URL 링크</th>
+            <th>추천</th>
             <td>
-              <div className="link-box">
-                <a href={detail.link} target="_blank" rel="noopener noreferrer">{detail.link}</a>
-                <a href={detail.link} target="_blank" rel="noopener noreferrer" className="link-button">상세 바로가기 &gt;</a>
-              </div>
+              👍 {detail.likeCount} 명
+              <button onClick={handleLike} style={{ marginLeft: "10px" }}>좋아요</button>
             </td>
           </tr>
-          <tr><th>제목</th><td><a href={detail.link} target="_blank" rel="noopener noreferrer">{detail.title}</a></td></tr>
-          <tr><th>금액</th><td style={{ color: "#0070c0" }}>{detail.price}</td></tr>
-          <tr><th>추천</th><td>{detail.likes} 명</td></tr>
-          <tr><th>사진</th><td><img src={detail.image} alt="deal" className="deal-image" /></td></tr>
+          <tr><th>조회수</th><td>👁 {detail.viewCount}</td></tr>
+          <tr>
+            <th>사진</th>
+            <td>
+              {detail.imageDtos?.length > 0 ? (
+                detail.imageDtos.map((img, i) => (
+                  <img key={i} src={img.fileUrl} alt={`deal-${i}`} className="deal-image" />
+                ))
+              ) : (
+                <span>이미지가 없습니다.</span>
+              )}
+            </td>
+          </tr>
         </tbody>
       </table>
 
       {/* 댓글 영역 */}
       <div className="comment-section">
-        <h3>댓글 {comments.length}개</h3>
+        <h3>댓글 {detail.dtos?.length || 0}개</h3>
         <ul className="comment-list">
-          {comments.map(comment => (
+          {detail.dtos?.map(comment => (
             <li key={comment.id}>
-              <div className="comment-author">{comment.author}</div>
+              <div className="comment-author">익명</div>
               <div className="comment-content">{comment.content}</div>
-              <div className="comment-date">{comment.date}</div>
+              <div className="comment-date">{comment.createdAt?.split("T")[0]}</div>
             </li>
           ))}
         </ul>
-
         <form className="comment-form" onSubmit={handleSubmit}>
           <textarea
             placeholder="댓글을 입력하세요"

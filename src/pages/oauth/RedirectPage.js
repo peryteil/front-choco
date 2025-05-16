@@ -18,6 +18,11 @@ function OauthRedirectPage() {
       window.dispatchEvent(new Event("login")); // ✅ 추가
       navigate("/");
 
+
+      window.dispatchEvent(new Event("login")); // ✅ 추가
+      navigate("/");
+
+
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       navigate("/");
     } else {

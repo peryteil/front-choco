@@ -25,6 +25,10 @@ export default function LoginPage() {
       );
 
       const { accessToken } = response.data;
+      if (accessToken) {
+        localStorage.setItem("access_token", accessToken);
+        window.dispatchEvent(new Event("login")); // 선택적: 로그인된 상태 처리
+        navigate("/mypage"); // ✅ 로그인 후 마이페이지 이동
 
       if (accessToken) {
         localStorage.setItem("access_token", accessToken);
