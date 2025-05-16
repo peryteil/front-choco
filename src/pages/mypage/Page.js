@@ -8,7 +8,7 @@ export default function MyPage() {
   const [reviews, setReviews] = useState([]);
   const [activeTab, setActiveTab] = useState("overview");
 
-<<<<<<< HEAD
+
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem("user"));
         setUser(
@@ -116,6 +116,60 @@ export default function MyPage() {
             <li onClick={() => setActiveTab("reviews")}>💬 내 리뷰</li>
           </ul>
         </div>
+
+  useEffect(() => {
+  const token = localStorage.getItem("access_token");
+
+  if (!token) {
+    // 로그인 안 되어 있으면 로그인 페이지로 리디렉트
+    window.location.href = "/login";
+    return;
+  }
+
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+  const fetchData = async () => {
+    try {
+      const userRes = await axios.get("http://localhost:8080/api/user");
+      const orderRes = await axios.get("http://localhost:8080/api/orders");
+      const reviewRes = await axios.get("http://localhost:8080/api/reviews");
+
+      setUser(userRes.data);
+      setOrders(orderRes.data);
+      setReviews(reviewRes.data);
+    } catch (err) {
+      console.error("데이터 요청 실패", err);
+
+      // 인증 실패시 로그인 페이지로 리디렉트
+      if (err.response?.status === 401 || err.response?.status === 403) {
+        window.location.href = "/login";
+      }
+    }
+  };
+
+  fetchData();
+}, []);
+
+
+  if (!user || !user.name) return <div>로딩 중...</div>;
+
+  return (
+    <div className="mypage-container">
+      {/* 좌측 유저 정보 영역 */}
+      <div className="mypage-sidebar">
+        <div className="profile-card">
+          <div className="profile-image">{user.name?.[0] || "?"}</div>
+          <h3>{user.name}</h3>
+          <p>{user.email}</p>
+          <span className="badge">
+            {user.role || user.membership || "일반회원"}
+          </span>
+          <ul className="menu-list">
+            <li onClick={() => setActiveTab("orders")}>🛒 주문 내역</li>
+            <li onClick={() => setActiveTab("reviews")}>💬 내 리뷰</li>
+          </ul>
+        </div>
+
       </div>
 
       {/* 우측 콘텐츠 영역 */}
@@ -182,5 +236,8 @@ export default function MyPage() {
       </div>
     </div>
   );
+
 }
->>>>>>> feature-you
+
+}
+
