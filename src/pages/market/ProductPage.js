@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import './Product.css';
-import Relate from "../../components/product/Relate"; // ★ 추가!
+import Relate from "../../components/product/Relate";
 import ProductTab from "../../components/product/ProductTab";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -17,7 +17,8 @@ export default function ProductPage() {
                 console.log("상품조회실패", err)
             })
 
-    }, [])
+    }, [id])
+
 
 
 
@@ -35,7 +36,12 @@ export default function ProductPage() {
                     <p className="brand-origin">{product.brand} · {product.origin}</p>
                     <h1 className="product-title">{product.title}</h1>
                     <div className="rating">
-                        ⭐⭐⭐⭐☆ <span>({product.reviewCount} 리뷰)</span>
+                        {Array.from({ length: 5 }, (_, i) =>
+                            i < Math.round(product.averageRating) ? "⭐" : "☆"
+                        ).join("")}
+                        <span style={{ marginLeft: "8px" }}>
+                            ({product.averageRating.toFixed(1)} / 5.0 · 리뷰 {product.reviewCount}개)
+                        </span>
                     </div>
                     <div className="price">{product.price.toLocaleString()}원</div>
                     <p className="description">{product.desc}</p>
@@ -58,7 +64,7 @@ export default function ProductPage() {
             <ProductTab product={product} />
 
             {/* 🔥 탭 컴포넌트 추가 */}
-            <Relate />
+            <Relate productId={id} />
         </div>
     );
 }

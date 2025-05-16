@@ -40,9 +40,20 @@ export default function ProductTab({ product }) {
         )}
         {activeTab === 'review' && (
           <div>
-            {product.reviewDtos?.length > 0 ? (product.reviewDtos.map((review, index) => (
-              <p key={index}>⭐{review.content}</p>
-            ))) : (<p>아직 리뷰가 없습니다</p>)}
+            {product.reviewDtos?.length > 0 ? (
+              product.reviewDtos.map((review) => (
+                <div key={review.id} className="review-item">
+                  <div className="review-stars">
+                    {Array.from({ length: 5 }, (_, i) =>
+                      i < review.rating ? "⭐" : "☆"
+                    ).join("")}
+                  </div>
+                  <p className="review-content">{review.content}</p>
+                </div>
+              ))
+            ) : (
+              <p>아직 리뷰가 없습니다</p>
+            )}
           </div>
         )}
       </div>

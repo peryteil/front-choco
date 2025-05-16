@@ -1,0 +1,222 @@
+.admin-layout {
+  display: flex;
+  height: 100vh;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f9f9f9;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin: 20px;
+  height: fit-content;
+}
+
+.sidebar-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+  font-size: 16px;
+  color: #333;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 500;
+}
+
+.menu-item span {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.menu-item:hover {
+  background-color: #f2f2f2;
+}
+
+.menu-item.active {
+  background-color: #ff7a00;
+  color: white;
+  font-weight: 700;
+}
+
+.menu-item.active span {
+  color: white;
+}
+
+.dashboard-container {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.dashboard-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.dashboard-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fff;
+}
+
+.card-title {
+  color: #666;
+  font-size: 14px;
+}
+
+.card-value {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-change {
+  font-size: 12px;
+  color: green;
+}
+
+.dashboard-orders {
+  margin-top: 40px;
+}
+
+.orders-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table thead {
+  background-color: #f3f3f3;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 12px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+}
+.dashboard-container {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.dashboard-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+/* 매출 카드 영역 */
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.dashboard-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-2px);
+}
+
+.card-title {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.card-value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card-change {
+  font-size: 12px;
+  color: #6cbb6c;
+  margin-top: 4px;
+}
+
+/* 최근 주문 영역 */
+.dashboard-orders {
+  margin-top: 48px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.orders-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.orders-subtext {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table thead {
+  background-color: #f9f9f9;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 14px;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.orders-table th {
+  font-weight: 600;
+  color: #444;
+}
+
+.orders-table td {
+  color: #333;
+}

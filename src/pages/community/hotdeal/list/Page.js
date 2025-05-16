@@ -22,7 +22,7 @@ function HotdealListPage() {
                             <th>구분</th>
                             <th>쇼핑몰</th>
                             <th>제목</th>
-                            <th>추천/댓글</th>
+                            <th>추천</th>
                             <th>조회수</th>
                             <th>작성자</th>
                             <th>등록일</th>
@@ -38,7 +38,7 @@ function HotdealListPage() {
                                 onClick={() => navigate(`/community/hotdeal/${item.id}`)}>
                                     {item.title}
                                     </td>
-                                <td>👍 {item.likeCount} 💬 {item.viewCount}</td>
+                                <td>👍 {item.likeCount}</td>
                                 <td>{item.viewCount}</td>
                                 <td>{item.category}</td>
                                 <td>{item.createdAt.split("T")[0]}</td>

@@ -20,6 +20,10 @@ import SignUpPage from "./pages/signup/Page";
 import LoginPage from "./pages/login/Page";
 import MyPage from "./pages/mypage/Page";
 import OauthRedirectPage from "./pages/oauth/RedirectPage";
+import CommunityPage from "./pages/community/Page"
+// import AdminPage from "./pages/admin/Page"; 
+import AdminDashboard from "./pages/admin/DashboardPage";
+
 
 function App() {
   return (
@@ -35,6 +39,7 @@ function App() {
 
         {/* 커뮤니티 레이아웃 */}
         <Route path="/community" element={<CommunityLayout />}>
+        <Route index element={<CommunityPage/>}/>
           <Route path="hotdeal" element={<HotdealPage />}>
             <Route index element={<HotdealListPage />} />
             <Route path="write" element={<HotWritePage />} />
@@ -57,6 +62,9 @@ function App() {
         <Route path="/mypage" element={<MyPage />} />
 
         <Route path="/oauth2/redirect" element={<OauthRedirectPage />} />
+        {/* 관리자 페이지 */}
+        {/* <Route path="/admin" element={<AdminPage />} /> */}
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Routes>
       <Footer />
     </div>

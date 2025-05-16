@@ -1,0 +1,46 @@
+.settings-page {
+  padding: 24px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.settings-box {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 24px;
+  background-color: #fff;
+  max-width: 700px;
+}
+
+.settings-box h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.settings-box .description {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.settings-box label {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.settings-box input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}

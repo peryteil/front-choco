@@ -72,7 +72,6 @@ function ReviewPage() {
       <div className="trending-section">
         <div className="trending-header">
           <h2>지금 떠오르는 후기</h2>
-          <a href="#" className="more-link">더보기 &gt;</a>
         </div>
         <div className="trending-list">
           {reviewview.map((item) => (
@@ -91,12 +90,12 @@ function ReviewPage() {
       <div className="review-list-page">
         <h2>초콜릿 구매를 리뷰로 공유해요</h2>
         <div className="search-box">
-          <input
+          {/* <input
             type="text"
             placeholder="브랜드명, 제목, 국가 등 검색"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-          />
+          /> */}
         </div>
         {reviewCreate.map((r) => (
           <div key={r.id} className="review-box" >
