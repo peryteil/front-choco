@@ -1,202 +1,215 @@
 .header {
-    background-color: #fff;
-    border-bottom: 1px solid #e5e5e5;
-    padding: 10px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  }
-  
-  .header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .header-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-  }
-  
-  .menu-button {
-    background: none;
-    border: none;
-    display: none;
-    cursor: pointer;
-  }
-  
-  /* 햄버거 버튼은 모바일에서만 보이게 */
-  @media (max-width: 768px) {
-    .menu-button {
-      display: block;
-    }
-  }
-  
-  .logo {
-    display: flex;         /* 가로로 배치! */
-    align-items: center;   /* 세로 중앙 정렬 */
-    gap: 8px;              /* 이미지와 글자 사이 간격 */
-  }
-  .logo a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    color: inherit;
-  }
-  .logo-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .logo img {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-  }
-  
-  .logo-text h1 {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .logo-text p {
-    font-size: 12px;
-    color: #777;
-    margin: 0;
-  }
-  
-  .nav-desktop {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .nav-desktop a {
-    text-decoration: none;
-    color: #333;
-    font-size: 14px;
-  }
-  
-  .nav-desktop a:hover {
-    color: #f97316;
-  }
-  
-  /* 모바일에서는 nav-desktop 숨김 */
-  @media (max-width: 768px) {
-    .nav-desktop {
-      display: none;
-    }
-  }
-  
-  .action-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .auth-buttons {
-    display: flex;
-    gap: 8px;
-  }
-  
-  .login-btn {
-    font-size: 14px;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .signup-btn {
-    background-color: #f97316;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    text-decoration: none;
-  }
-  
-  .cart-button {
-    position: relative;
-  }
-  
-  .cart-count {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    background-color: #f97316;
-    color: white;
-    width: 16px;
-    height: 16px;
-    font-size: 10px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* 모바일 메뉴 */
-  .nav-mobile {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px 0;
-  }
-  
-  .nav-mobile a {
-    text-decoration: none;
-    color: #333;
-    font-size: 14px;
-  }
-  
-  /* 검색창 */
-  .search-dialog {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    padding-top: 60px;
-    z-index: 1000;
-  }
-  
-  .search-box {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    width: 90%;
-    max-width: 500px;
-  }
-  
-  .search-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .search-input {
-    position: relative;
-    margin-top: 20px;
-  }
-  
-  .search-input input {
-    width: 100%;
-    padding: 8px 8px 8px 30px;
-    border: 1px solid #e5e5e5;
-    border-radius: 5px;
-  }
-  
-  .search-input svg {
-    position: absolute;
-    left: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #777;
-  }
-  .mypage-button {
-    margin: 0 10px;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
-  
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  display: none;
+  cursor: pointer;
+}
+
+/* 햄버거 버튼은 모바일에서만 보이게 */
+@media (max-width: 768px) {
+  .menu-button {
+    display: block;
+  }
+}
+
+.logo {
+  display: flex; /* 가로로 배치! */
+  align-items: center; /* 세로 중앙 정렬 */
+  gap: 8px; /* 이미지와 글자 사이 간격 */
+}
+.logo a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.logo-text h1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.logo-text p {
+  font-size: 12px;
+  color: #777;
+  margin: 0;
+}
+
+.nav-desktop {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-desktop a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.nav-desktop a:hover {
+  color: #f97316;
+}
+
+/* 모바일에서는 nav-desktop 숨김 */
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.login-btn {
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+}
+
+.signup-btn {
+  background-color: #f97316;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.cart-button {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #f97316;
+  color: white;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 모바일 메뉴 */
+.nav-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.nav-mobile a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+/* 검색창 */
+.search-dialog {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.search-box {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+}
+
+.search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-input {
+  position: relative;
+  margin-top: 20px;
+}
+
+.search-input input {
+  width: 100%;
+  padding: 8px 8px 8px 30px;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+}
+
+.search-input svg {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+}
+.mypage-button {
+  margin: 0 10px;
+}
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: 8px;
+}
+
+.logout-icon svg {
+  stroke: #333;
+}
+
+.logout-icon:hover svg {
+  stroke: #d33;
+}
