@@ -24,7 +24,6 @@ import CommunityPage from "./pages/community/Page"
 // import AdminPage from "./pages/admin/Page"; 
 import AdminDashboard from "./pages/admin/DashboardPage";
 
-
 function App() {
   return (
     <div>
@@ -60,7 +59,6 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/mypage" element={<MyPage />} />
-
         <Route path="/oauth2/redirect" element={<OauthRedirectPage />} />
         {/* 관리자 페이지 */}
         {/* <Route path="/admin" element={<AdminPage />} /> */}
