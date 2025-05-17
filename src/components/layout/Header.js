@@ -92,9 +92,13 @@ export default function Header() {
               </div>
             )}
 
+
             <Link to="/cart" className="cart-button">
               <ShoppingCart size={20} />
               <span className="cart-count"></span>
+            </Link>
+            <Link to="/admin/dashboard" className="admin-btn">
+              관리자 페이지
             </Link>
           </div>
         </div>
