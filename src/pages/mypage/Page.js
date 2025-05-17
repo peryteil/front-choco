@@ -55,10 +55,6 @@ export default function MyPage() {
           <span className="badge">
             {user.role || user.membership || "일반회원"}
           </span>
-          <ul className="menu-list">
-            <li onClick={() => setActiveTab("orders")}>🛒 주문 내역</li>
-            <li onClick={() => setActiveTab("reviews")}>💬 내 리뷰</li>
-          </ul>
         </div>
       </div>
 
