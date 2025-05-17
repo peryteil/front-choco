@@ -42,7 +42,7 @@ export default function MyPage() {
 }, []);
 
 
-  if (!user || !user.name) return <div>로딩 중...</div>;
+  if (!user || !user.nickname) return <div>로딩 중...</div>;
 
   return (
     <div className="mypage-container">
