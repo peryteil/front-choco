@@ -19,20 +19,34 @@ export default function ProductPage() {
                 console.log("상품조회실패", err);
             });
     }, [id]);
+    
 
     const handleAddToCart = () => {
-        const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-        const existingIndex = cartItems.findIndex(item => item.id === product.id);
-
-        if (existingIndex !== -1) {
-            cartItems[existingIndex].quantity += 1;
-        } else {
-            cartItems.push({ ...product, quantity: 1 });
-        }
-
-        localStorage.setItem("cart", JSON.stringify(cartItems));
-        navigate("/cart");
-    };
+        const token = localStorage.getItem("access_token");
+      
+        axios.post(
+          `${process.env.REACT_APP_API_URL}/api/cart/add/${product.id}`,
+          {
+            count: 1,
+            price: product.price,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            withCredentials: true,
+          }
+        )
+          .then(() => {
+            alert("장바구니에 담겼습니다!");
+            navigate("/cart");
+          })
+          .catch((err) => {
+            console.error("장바구니 추가 실패", err);
+            alert("로그인이 필요합니다.");
+            navigate("/login");
+          });
+      };
 
     if (!product) {
         return <div className="empty-message">상품을 불러오는 중입니다...</div>;

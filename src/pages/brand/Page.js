@@ -16,8 +16,8 @@ export default function BrandPage() {
       try {
         let url =
           selectedCountry === "전체"
-            ? `${process.env.REACT_APP_API_URL}/brand/findAllList`
-            : `${process.env.REACT_APP_API_URL}/brand/findByCountry/${encodeURIComponent(selectedCountry)}`;
+            ? `${process.env.REACT_APP_API_URL}/api/brand/findAllList`
+            : `${process.env.REACT_APP_API_URL}/api/brand/findByCountry/${encodeURIComponent(selectedCountry)}`;
 
         const res = await axios.get(url);
         setBrand(res.data);

@@ -11,10 +11,10 @@ export default function BrandDetailPage() {
     const [otherBrands, setOtherBrands] = useState([]);
 
     useEffect(()=>{
-        axios.get(`${process.env.REACT_APP_API_URL}/brand/findById/${id}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/brand/findById/${id}`)
         .then(res=>{
             setBrand(res.data);
-            axios.get(`${process.env.REACT_APP_API_URL}/brand/findByCountry/${encodeURIComponent(res.data.country)}`)
+            axios.get(`${process.env.REACT_APP_API_URL}/api/brand/findByCountry/${encodeURIComponent(res.data.country)}`)
                     .then(response => {
                         const others = response.data.filter(b => b.id !== res.data.id);
                         setOtherBrands(others);
