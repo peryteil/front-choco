@@ -59,7 +59,8 @@ function HotdealDetailPage() {
       <h2 className="deal-title">핫딜정보 보기</h2>
       <table className="deal-table">
         <tbody>
-          <tr><th>작성자</th><td>{detail.title}</td></tr>
+          <tr><th>작성자</th><td>{detail.userDto?.nickname || "익명"}</td></tr>
+          <tr><th>타이틀</th><td>{detail.title}</td></tr>
           <tr><th>핫딜 정보</th><td>{detail.content}</td></tr>
           <tr><th>분류</th><td>{detail.category}</td></tr>
           <tr><th>등록일</th><td>{detail.createdAt.split("T")[0]}</td></tr>
@@ -95,7 +96,7 @@ function HotdealDetailPage() {
         <ul className="comment-list">
           {detail.dtos?.map(comment => (
             <li key={comment.id}>
-              <div className="comment-author">익명</div>
+              <div className="comment-author">{comment.userDto?.nickname || "익명"}</div>
               <div className="comment-content">{comment.content}</div>
               <div className="comment-date">{comment.createdAt?.split("T")[0]}</div>
             </li>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./HotdealWritePage.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function HotdealWritePage() {
   const [title, setTitle] = useState("");
@@ -14,6 +15,14 @@ export default function HotdealWritePage() {
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const navigate = useNavigate();
+  const token = localStorage.getItem("access_token");
+
+  useEffect(() => {
+    if (!token) {
+      alert("로그인이 필요합니다.");
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
     if (originPrice && price) {
@@ -35,7 +44,7 @@ export default function HotdealWritePage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const dto = {
       title,
       shopName,
@@ -44,28 +53,45 @@ export default function HotdealWritePage() {
       category,
       content
     };
-
+  
     const formData = new FormData();
     formData.append("dto", new Blob([JSON.stringify(dto)], { type: "application/json" }));
     if (imageFile) {
       formData.append("files", imageFile);
     }
-
+  
+    const token = localStorage.getItem("access_token");
+    console.log(token)
+  
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/hotDeal/create`, 
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/hotDeal/create`,
+        formData,
         {
-        method: "POST",
-        body: formData,
-      });
-
-      if (res.ok) {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (res.status === 200) {
         alert("핫딜 등록 성공!");
         navigate(`/community/hotdeal`);
       } else {
         alert("등록 실패");
       }
     } catch (err) {
-      console.error("등록 에러:", err);
+      if (err.response) {
+        // 서버가 응답했지만 4xx, 5xx 에러일 경우
+        console.error("📛 서버 응답 오류:", err.response.data);
+        console.error("📛 상태 코드:", err.response.status);
+      } else if (err.request) {
+        // 요청은 갔지만 응답이 없을 경우
+        console.error("❌ 요청 실패 (응답 없음):", err.request);
+      } else {
+        // 기타 에러
+        console.error("에러 발생:", err.message);
+      }
       alert("서버 오류 발생");
     }
   };
