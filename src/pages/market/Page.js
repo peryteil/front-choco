@@ -13,20 +13,14 @@ export default function MarketPage() {
   const [priceRange, setPriceRange] = useState(200000);
 
   useEffect(() => {
-    // 상품 데이터 가져오기
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/product/findAllSimple`)
-      .then((res) => {
-        setProducts(res.data);
-      })
+      .then((res) => setProducts(res.data))
       .catch((err) => console.error("상품 불러오기 실패", err));
 
-    // 브랜드 데이터 가져오기
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/brand/findAll`)
-      .then((res) => {
-        setBrands(res.data); // 예: [{ id: 1, title: "고디바" }, ...]
-      })
+      .then((res) => setBrands(res.data))
       .catch((err) => console.error("브랜드 불러오기 실패", err));
   }, []);
 
@@ -35,13 +29,9 @@ export default function MarketPage() {
       selectedCategory === "전체" ||
       (product.category && product.category === selectedCategory);
 
-    const inferredBrand = ["고디바", "린트", "레오니다스", "페레로"].find((b) =>
-            product.title.includes(b)
-        );
-
     const matchesBrand =
       selectedBrands.length === 0 ||
-      (product.brand && selectedBrands.includes(product.brand));
+      (product.brand?.title && selectedBrands.includes(product.brand.title));
 
     const matchesPrice = product.price <= priceRange;
 
@@ -75,11 +65,9 @@ export default function MarketPage() {
     <section className="market-page">
       <MarketBanner />
       <div className="market-content">
-        {/* 왼쪽 필터 */}
         <aside className="filter-sidebar">
           <h3>필터</h3>
 
-          {/* 가격 */}
           <div className="filter-section">
             <h4>가격</h4>
             <input
@@ -93,7 +81,6 @@ export default function MarketPage() {
             <p>{priceRange.toLocaleString()}원 이하</p>
           </div>
 
-          {/* 브랜드 */}
           <div className="filter-section">
             <h4>브랜드</h4>
             {brands.map((brand) => (
@@ -110,7 +97,6 @@ export default function MarketPage() {
             ))}
           </div>
 
-          {/* 종류 */}
           <div className="filter-section">
             <h4>종류</h4>
             {categories.map((type) => (
@@ -129,7 +115,6 @@ export default function MarketPage() {
           </div>
         </aside>
 
-        {/* 오른쪽 상품 리스트 */}
         <section className="product-list">
           {filteredProducts.map((product) => (
             <Link
@@ -145,7 +130,9 @@ export default function MarketPage() {
                 />
               </div>
               <div className="product-info">
-                <small className="brand">{product.brand}</small>
+                <small className="brand">
+                  {product.brand?.title || "브랜드 없음"}
+                </small>
                 <h4 className="name">{product.title}</h4>
                 <p className="price">{product.price?.toLocaleString()}원</p>
                 <span className="type">
