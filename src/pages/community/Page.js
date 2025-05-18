@@ -11,7 +11,7 @@ export default function CommunityPage() {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/product/findBest`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/product/findBest`)
       .then(res => {
         setProBest(res.data)
       })

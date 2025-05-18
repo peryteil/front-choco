@@ -10,7 +10,7 @@ export default function Relate({ productId }) {
   console.log(productId)
   useEffect(() => {
     if (productId) {
-      fetch(`${process.env.REACT_APP_API_URL}/product/findRelate/${productId}`)
+      fetch(`${process.env.REACT_APP_API_URL}/api/product/findRelate/${productId}`)
         .then((res) => {
           if (!res.ok) throw new Error('네트워크 오류');
           return res.json();
