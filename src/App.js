@@ -20,9 +20,10 @@ import SignUpPage from "./pages/signup/Page";
 import LoginPage from "./pages/login/Page";
 import MyPage from "./pages/mypage/Page";
 import OauthRedirectPage from "./pages/oauth/RedirectPage";
-import CommunityPage from "./pages/community/Page"
-// import AdminPage from "./pages/admin/Page"; 
+import CommunityPage from "./pages/community/Page";
+// import AdminPage from "./pages/admin/Page";
 import AdminDashboard from "./pages/admin/DashboardPage";
+import AddProductPage from "./pages/admin/AddProductPage";
 
 function App() {
   const token = localStorage.getItem("access_token");
@@ -40,7 +41,7 @@ function App() {
 
         {/* 커뮤니티 레이아웃 */}
         <Route path="/community" element={<CommunityLayout />}>
-        <Route index element={<CommunityPage/>}/>
+          <Route index element={<CommunityPage />} />
           <Route path="hotdeal" element={<HotdealPage />}>
             <Route index element={<HotdealListPage />} />
             <Route path="write" element={<HotWritePage />} />
@@ -65,6 +66,7 @@ function App() {
         {/* 관리자 페이지 */}
         {/* <Route path="/admin" element={<AdminPage />} /> */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/add-product" element={<AddProductPage />} />
       </Routes>
       
       <Footer />

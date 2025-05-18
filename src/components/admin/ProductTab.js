@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ProductTab.css";
 
 export default function ProductTab() {
   const [products, setProducts] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
+    // 더미 대신 실제 API 연결 가능
     setProducts([
       { id: 1, name: "다크 초콜릿 컬렉션", brand: "고디바", category: "다크", price: 32000, stock: 45 },
       { id: 2, name: "밀크 초콜릿 트러플", brand: "린트", category: "트러플", price: 28000, stock: 32 },
@@ -19,6 +22,10 @@ export default function ProductTab() {
     [p.name, p.brand, p.category].some((v) => v.includes(searchText))
   );
 
+  const handleAddProduct = () => {
+    navigate("/admin/add-product"); // 등록 페이지로 이동
+  };
+
   return (
     <div className="product-admin-page">
       <h2>상품 관리</h2>
@@ -31,7 +38,7 @@ export default function ProductTab() {
           onChange={(e) => setSearchText(e.target.value)}
         />
         <button className="filter-btn">필터</button>
-        <button className="add-btn">+ 상품 추가</button>
+        <button className="add-btn" onClick={handleAddProduct}>+ 상품 추가</button>
       </div>
 
       <table className="product-table">
