@@ -1,0 +1,35 @@
+.add-product-page {
+  padding: 40px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.add-product-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-product-form label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.add-product-form input {
+  padding: 8px;
+  margin-top: 4px;
+  font-size: 16px;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #0070c0;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-btn:hover {
+  background-color: #005999;
+}

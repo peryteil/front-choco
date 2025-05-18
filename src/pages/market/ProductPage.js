@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import './Product.css';
 import Relate from "../../components/product/Relate";
 import ProductTab from "../../components/product/ProductTab";
@@ -7,20 +7,32 @@ import axios from "axios";
 
 export default function ProductPage() {
     const { id } = useParams();
-    const [product, setProduct] = useState(null)
+    const navigate = useNavigate();
+    const [product, setProduct] = useState(null);
+
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/product/findById/${id}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/product/findById/${id}`)
             .then((res) => {
-                setProduct(res.data)
+                setProduct(res.data);
             })
             .catch((err) => {
-                console.log("상품조회실패", err)
-            })
+                console.log("상품조회실패", err);
+            });
+    }, [id]);
 
-    }, [id])
+    const handleAddToCart = () => {
+        const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+        const existingIndex = cartItems.findIndex(item => item.id === product.id);
 
+        if (existingIndex !== -1) {
+            cartItems[existingIndex].quantity += 1;
+        } else {
+            cartItems.push({ ...product, quantity: 1 });
+        }
 
-
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+        navigate("/cart");
+    };
 
     if (!product) {
         return <div className="empty-message">상품을 불러오는 중입니다...</div>;
@@ -47,7 +59,7 @@ export default function ProductPage() {
                     <p className="description">{product.desc}</p>
 
                     <div className="button-group">
-                        <button className="add-to-cart">🛒 장바구니에 추가</button>
+                        <button className="add-to-cart" onClick={handleAddToCart}>🛒 장바구니에 추가</button>
                         <button className="like-btn">♡</button>
                         <button className="share-btn">↗</button>
                     </div>
@@ -60,10 +72,8 @@ export default function ProductPage() {
                     </div>
                 </div>
             </section>
-            {/* 상세 설명 , 원재료 , 리뷰 */}
-            <ProductTab product={product} />
 
-            {/* 🔥 탭 컴포넌트 추가 */}
+            <ProductTab product={product} />
             <Relate productId={id} />
         </div>
     );
