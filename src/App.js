@@ -25,6 +25,8 @@ import CommunityPage from "./pages/community/Page"
 import AdminDashboard from "./pages/admin/DashboardPage";
 
 function App() {
+  const token = localStorage.getItem("access_token");
+    console.log("access_token" ,token)
   return (
     <div>
       <Header />
@@ -64,6 +66,7 @@ function App() {
         {/* <Route path="/admin" element={<AdminPage />} /> */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Routes>
+      
       <Footer />
     </div>
   );
