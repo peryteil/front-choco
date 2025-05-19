@@ -25,7 +25,7 @@ export default function BrandDetailPage() {
             
         })
     },[id])
-    if (!brand) return <p>존재하지 않는 브랜드입니다.</p>;
+    if (!brand) return <p>로딩중 입니다..</p>;
 
     return (
         <div className="brand-detail-wrapper">

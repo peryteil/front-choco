@@ -11,8 +11,8 @@ function HotdealDetailPage() {
   // 상세 조회 + 조회수 증가
   const fetchDetail = async () => {
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/hotDeal/increaseViewCount/${id}`);
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/hotDeal/findById/${id}`);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/hotDeal/increaseViewCount/${id}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/hotDeal/findById/${id}`);
       setDetail(res.data);
     } catch (err) {
       console.error("상세 데이터 불러오기 실패", err);

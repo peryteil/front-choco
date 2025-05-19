@@ -8,7 +8,7 @@ export default function CommunityHighlight() {
   const [hotDeal, setHotDeal] = useState([]);
   const navigate=useNavigate();
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/hotDeal/topmain`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/hotDeal/topmain`)
       .then(res => {
         setHotDeal(res.data)
       })
