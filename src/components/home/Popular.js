@@ -8,7 +8,7 @@ export default function Popular() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/product/findByMain`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/product/findByMain`)
       .then(res => {
         setProduct(res.data);
       })

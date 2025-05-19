@@ -7,7 +7,7 @@ export default function BrandSection() {
   const [brand, setBrand] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/brand/findByMain`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/brand/findByMain`)
       .then(res => {
         setBrand(res.data)
       })

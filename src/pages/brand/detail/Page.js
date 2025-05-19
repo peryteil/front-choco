@@ -11,10 +11,10 @@ export default function BrandDetailPage() {
     const [otherBrands, setOtherBrands] = useState([]);
 
     useEffect(()=>{
-        axios.get(`${process.env.REACT_APP_API_URL}/brand/findById/${id}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/brand/findById/${id}`)
         .then(res=>{
             setBrand(res.data);
-            axios.get(`${process.env.REACT_APP_API_URL}/brand/findByCountry/${encodeURIComponent(res.data.country)}`)
+            axios.get(`${process.env.REACT_APP_API_URL}/api/brand/findByCountry/${encodeURIComponent(res.data.country)}`)
                     .then(response => {
                         const others = response.data.filter(b => b.id !== res.data.id);
                         setOtherBrands(others);
@@ -25,7 +25,7 @@ export default function BrandDetailPage() {
             
         })
     },[id])
-    if (!brand) return <p>존재하지 않는 브랜드입니다.</p>;
+    if (!brand) return <p>로딩중 입니다..</p>;
 
     return (
         <div className="brand-detail-wrapper">

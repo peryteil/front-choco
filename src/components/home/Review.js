@@ -7,7 +7,7 @@ export default function Review() {
   const [review , setReview] = useState([]);
   const navigate = useNavigate();
   useEffect(()=>{
-    axios.get(`${process.env.REACT_APP_API_URL}/review/latest`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/review/latest`)
     .then(res=>{
       setReview(res.data)
     })

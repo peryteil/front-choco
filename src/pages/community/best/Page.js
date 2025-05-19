@@ -7,7 +7,7 @@ export default function BestPage() {
   const [visibleCount, setVisibleCount] = useState(5);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/product/bestReview`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/product/bestReview`)
       .then(res => setAllProducts(res.data))
       .catch(err => console.error("상품 불러오기 실패:", err));
   }, []);
