@@ -33,3 +33,46 @@
 .submit-btn:hover {
   background-color: #005999;
 }
+.form-label {
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  display: block;
+  color: #333;
+}
+
+.form-select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+  appearance: none;
+}
+
+.form-select:focus {
+  border-color: #4CAF50;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+.brand-select-wrapper {
+  margin-bottom: 15px;
+}
+
+.brand-select-inline {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.add-brand-btn {
+  padding: 8px 12px;
+  font-size: 13px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

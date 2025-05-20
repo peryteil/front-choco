@@ -24,10 +24,22 @@ import CommunityPage from "./pages/community/Page";
 // import AdminPage from "./pages/admin/Page";
 import AdminDashboard from "./pages/admin/DashboardPage";
 import AddProductPage from "./pages/admin/AddProductPage";
+import ChatbotButton from "./components/chatbot/ChatbotButton";
+import ChatbotWindow from "./components/chatbot/ChatbotWindow";
+import AddBrandPage from "./pages/admin/AddBrandPage";
+import { useState } from "react";
+
 
 function App() {
+  
+  const [showChatbot, setShowChatbot] = useState(false);
+
+  const toggleChatbot = () => {
+    setShowChatbot((prev) => !prev);
+  };
+
   const token = localStorage.getItem("access_token");
-    console.log("access_token" ,token)
+  console.log("access_token", token);
   return (
     <div>
       <Header />
@@ -67,9 +79,12 @@ function App() {
         {/* <Route path="/admin" element={<AdminPage />} /> */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/add-product" element={<AddProductPage />} />
+        <Route path="/admin/add-brand" element={<AddBrandPage/>} />
       </Routes>
-      
+      <ChatbotButton onClick={toggleChatbot} />
+      {showChatbot && <ChatbotWindow onClose={toggleChatbot} />}
       <Footer />
+
     </div>
   );
 }
