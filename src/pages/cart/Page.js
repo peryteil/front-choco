@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ 추가
 import "./CartPage.css";
 import axios from "axios";
+
 
 export default function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const token = localStorage.getItem("access_token");
+  const navigate = useNavigate(); // ✅ 초기화
 
   const fetchCart = () => {
     axios
@@ -58,6 +61,10 @@ export default function CartPage() {
         console.error("장바구니 삭제 실패", err);
         alert("삭제 실패");
       });
+  };
+
+  const handleOrder = () => {
+    navigate("/order", { state: { cartItems } }); // ✅ 장바구니 데이터 전달
   };
 
   const totalPrice = cartItems.reduce(
@@ -119,7 +126,9 @@ export default function CartPage() {
             <strong>총 결제 금액</strong>
             <strong>{totalPrice.toLocaleString()}원</strong>
           </div>
-          <button className="order-button">주문하기</button>
+          <button className="order-button" onClick={handleOrder}>
+            주문하기
+          </button>
         </div>
       </div>
     </div>

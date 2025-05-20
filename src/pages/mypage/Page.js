@@ -21,9 +21,9 @@ export default function MyPage() {
 
   const fetchData = async () => {
     try {
-      const userRes = await axios.get("http://localhost:8080/api/user");
-      const orderRes = await axios.get("http://localhost:8080/api/orders");
-      const reviewRes = await axios.get("http://localhost:8080/api/reviews");
+      const userRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/mypage/info`);
+      const orderRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/mypage/orders`);
+      const reviewRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/mypage/reviews`);
 
       setUser(userRes.data);
       setOrders(orderRes.data);

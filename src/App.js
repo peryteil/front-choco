@@ -28,6 +28,7 @@ import ChatbotButton from "./components/chatbot/ChatbotButton";
 import ChatbotWindow from "./components/chatbot/ChatbotWindow";
 import AddBrandPage from "./pages/admin/AddBrandPage";
 import { useState } from "react";
+import OrderInfoPage from "./pages/cart/OrderInfoPage";
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
 
         {/* 장바구니 */}
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/order" element={<OrderInfoPage />} />
 
         {/* 회원 */}
         <Route path="/login" element={<LoginPage />} />
