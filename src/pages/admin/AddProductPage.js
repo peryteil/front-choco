@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./AddProductPage.css";
@@ -8,7 +8,7 @@ export default function AddProductPage() {
 
   const [form, setForm] = useState({
     name: "",
-    brand: "",
+    brandId: "",
     category: "",
     price: "",
     stock: "",
@@ -20,6 +20,14 @@ export default function AddProductPage() {
   });
 
   const [image, setImage] = useState(null);
+  const [brands, setBrands] = useState([]); // 브랜드 리스트
+
+  useEffect(() => {
+    // 브랜드 목록 가져오기
+    axios.get(`${process.env.REACT_APP_API_URL}/api/brand/findTitle`)
+      .then((res) => setBrands(res.data))
+      .catch((err) => console.error("브랜드 목록 불러오기 실패", err));
+  }, []);
 
   const handleChange = (e) => {
     setForm({
@@ -35,8 +43,7 @@ export default function AddProductPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 필수 필드 검사
-    const requiredFields = ["name", "brand", "category", "price", "stock"];
+    const requiredFields = ["name", "brandId", "category", "price", "stock"];
     for (const field of requiredFields) {
       if (!form[field]) {
         alert("필수 항목을 모두 입력해주세요.");
@@ -48,7 +55,6 @@ export default function AddProductPage() {
       const formData = new FormData();
       const dto = {
         title: form.name,
-        brand: form.brand,
         category: form.category,
         price: parseInt(form.price),
         stock: parseInt(form.stock),
@@ -62,7 +68,8 @@ export default function AddProductPage() {
       formData.append("dto", new Blob([JSON.stringify(dto)], { type: "application/json" }));
       if (image) formData.append("files", image);
 
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/product/create`, formData, {
+      // ✅ brandId를 URL 경로에 포함
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/product/create/${form.brandId}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -81,8 +88,31 @@ export default function AddProductPage() {
         <label>상품명 *</label>
         <input type="text" name="name" value={form.name} onChange={handleChange} />
 
-        <label>브랜드 *</label>
-        <input type="text" name="brand" value={form.brand} onChange={handleChange} />
+        <div className="brand-select-wrapper">
+          <label className="form-label">브랜드 *</label>
+          <div className="brand-select-inline">
+            <select
+              name="brandId"
+              value={form.brandId}
+              onChange={handleChange}
+              className="form-select"
+            >
+              <option value="">브랜드 선택</option>
+              {brands.map((brand) => (
+                <option key={brand.id} value={brand.id}>
+                  {brand.title}
+                </option>
+              ))}
+            </select>
+            <button
+              type="button"
+              className="add-brand-btn"
+              onClick={() => navigate("/admin/add-brand")}
+            >
+              + 브랜드 추가
+            </button>
+          </div>
+        </div>
 
         <label>카테고리 *</label>
         <input type="text" name="category" value={form.category} onChange={handleChange} />

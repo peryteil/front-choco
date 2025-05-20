@@ -1,0 +1,56 @@
+.add-brand-page {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.add-brand-page h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.add-brand-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.add-brand-page input,
+.add-brand-page textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.add-brand-page textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.add-brand-page input:focus,
+.add-brand-page textarea:focus {
+  border-color: #4caf50;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+}
+
+.add-brand-page button {
+  margin-top: 10px;
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-brand-page button:hover {
+  background-color: #43a047;
+}
