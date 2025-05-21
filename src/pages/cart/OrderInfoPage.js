@@ -6,9 +6,13 @@ export default function OrderInfoPage() {
   const location = useLocation();
   const cartItems = location.state?.cartItems || [];
 
+  const simplifiedCartItems = cartItems.map(item => ({
+  productId: item.productDto.id,   // productDto에서 id 추출
+  count: item.count
+}));
+
   const [buyerInfo, setBuyerInfo] = useState({
     name: "",
-    email: "",
     tel: "",
     addr: "",
     postcode: "",
@@ -25,11 +29,14 @@ export default function OrderInfoPage() {
   };
 
   const handlePayment = () => {
+    console.log("📦 cartItems 확인: ", cartItems);  // ✅ 이 줄 추가
+
     if (!window.IMP) return alert("아임포트 라이브러리가 로드되지 않았습니다.");
     const IMP = window.IMP;
-    IMP.init("imp04333337"); // 아임포트 가맹점 식별코드
+    IMP.init("imp04333337");
 
     const merchant_uid = `order_${new Date().getTime()}`;
+    const email = localStorage.getItem("user_email"); // 또는 JWT에서 추출
 
     IMP.request_pay(
       {
@@ -38,7 +45,7 @@ export default function OrderInfoPage() {
         merchant_uid,
         name: cartItems.map((item) => item.productDto.title).join(", "),
         amount: totalPrice,
-        buyer_email: buyerInfo.email,
+        buyer_email: email || "unknown@example.com",
         buyer_name: buyerInfo.name,
         buyer_tel: buyerInfo.tel,
         buyer_addr: buyerInfo.addr,
@@ -55,12 +62,17 @@ export default function OrderInfoPage() {
                 imp_uid: rsp.imp_uid,
                 merchant_uid: rsp.merchant_uid,
                 amount: totalPrice,
-                cartItems,
-                buyerInfo,
+                name: buyerInfo.name,
+                tel: buyerInfo.tel,
+                addr: buyerInfo.addr,
+                postcode: buyerInfo.postcode,
+                cartItems: simplifiedCartItems,
               },
               {
                 headers: {
-                  Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+                  Authorization: `Bearer ${localStorage.getItem(
+                    "access_token"
+                  )}`,
                 },
               }
             )
@@ -88,21 +100,24 @@ export default function OrderInfoPage() {
           placeholder="이름"
           value={buyerInfo.name}
           onChange={handleInputChange}
-        /><br />
+        />
+        <br />
         <input
           type="text"
           name="tel"
           placeholder="전화번호"
           value={buyerInfo.tel}
           onChange={handleInputChange}
-        /><br />
+        />
+        <br />
         <input
           type="text"
           name="addr"
           placeholder="주소"
           value={buyerInfo.addr}
           onChange={handleInputChange}
-        /><br />
+        />
+        <br />
         <input
           type="text"
           name="postcode"

@@ -20,7 +20,7 @@ export default function CommunityPage() {
       })
   }, [])
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/review/top`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/review/top`)
       .then(res => {
         setReviews(res.data)
       })
@@ -30,7 +30,7 @@ export default function CommunityPage() {
   }, [])
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/hotDeal/top`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/hotDeal/top`)
     .then(res=>{
       setHotdeals(res.data)
     })

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import dayjs from "dayjs";
 import "./MyPage.css";
 
 export default function MyPage() {
@@ -9,38 +10,34 @@ export default function MyPage() {
   const [activeTab, setActiveTab] = useState("overview");
 
   useEffect(() => {
-  const token = localStorage.getItem("access_token");
+    const token = localStorage.getItem("access_token");
 
-  if (!token) {
-    // 로그인 안 되어 있으면 로그인 페이지로 리디렉트
-    window.location.href = "/login";
-    return;
-  }
-
-  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
-  const fetchData = async () => {
-    try {
-      const userRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/mypage/info`);
-      const orderRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/mypage/orders`);
-      const reviewRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/mypage/reviews`);
-
-      setUser(userRes.data);
-      setOrders(orderRes.data);
-      setReviews(reviewRes.data);
-    } catch (err) {
-      console.error("데이터 요청 실패", err);
-
-      // 인증 실패시 로그인 페이지로 리디렉트
-      if (err.response?.status === 401 || err.response?.status === 403) {
-        window.location.href = "/login";
-      }
+    if (!token) {
+      window.location.href = "/login";
+      return;
     }
-  };
 
-  fetchData();
-}, []);
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
+    const fetchData = async () => {
+      try {
+        const userRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/mypage/info`);
+        const orderRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/mypage/orders`);
+        const reviewRes = await axios.get(`${process.env.REACT_APP_API_URL}/api/mypage/reviews`);
+
+        setUser(userRes.data);
+        setOrders(orderRes.data);
+        setReviews(reviewRes.data);
+      } catch (err) {
+        console.error("데이터 요청 실패", err);
+        if (err.response?.status === 401 || err.response?.status === 403) {
+          window.location.href = "/login";
+        }
+      }
+    };
+
+    fetchData();
+  }, []);
 
   if (!user || !user.nickname) return <div>로딩 중...</div>;
 
@@ -81,6 +78,7 @@ export default function MyPage() {
           </button>
         </div>
 
+        {/* 개요 탭 */}
         {activeTab === "overview" && (
           <>
             <h4>최근 주문</h4>
@@ -98,17 +96,28 @@ export default function MyPage() {
           </>
         )}
 
+        {/* 주문 탭 */}
         {activeTab === "orders" && (
           <>
             <h4>주문 내역</h4>
-            {orders.map((order) => (
-              <div key={order.id}>
-                {order.productName} - {order.status}
-              </div>
-            ))}
+            <div className="order-list">
+              {orders.map((order) => (
+                <div key={order.id} className="order-item">
+                  <div>
+                    <strong>주문일자:</strong>{" "}
+                    {order.orderDate ? dayjs(order.orderDate).format("YYYY-MM-DD") : "날짜 없음"}
+                  </div>
+                  <div><strong>상품명:</strong> {order.productName}</div>
+                  <div><strong>수량:</strong> {order.quantity || 1}</div>
+                  <div><strong>총 금액:</strong> {order.totalPrice?.toLocaleString()}원</div>
+                  <div><strong>주문 상태:</strong> {order.status}</div>
+                </div>
+              ))}
+            </div>
           </>
         )}
 
+        {/* 리뷰 탭 */}
         {activeTab === "reviews" && (
           <>
             <h4>내 리뷰</h4>
