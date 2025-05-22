@@ -57,7 +57,7 @@ export default function OrderTab() {
               <td>{order.productName}</td>
               <td>{parseInt(order.totalPrice).toLocaleString()}원</td>
               <td>{order.status}</td>
-              <td>{order.orderedAt || "-"}</td>
+              <td>{order.createdAt || "-"}</td>
               <td>
                 <button className="action-btn">상세보기</button>
               </td>

@@ -105,7 +105,7 @@ export default function MyPage() {
                 <div key={order.id} className="order-item">
                   <div>
                     <strong>주문일자:</strong>{" "}
-                    {order.orderDate ? dayjs(order.orderDate).format("YYYY-MM-DD") : "날짜 없음"}
+                    {order.createdAt ? dayjs(order.createdAt).format("YYYY-MM-DD") : "날짜 없음"}
                   </div>
                   <div><strong>상품명:</strong> {order.productName}</div>
                   <div><strong>수량:</strong> {order.quantity || 1}</div>
